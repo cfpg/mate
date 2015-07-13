@@ -1,11 +1,9 @@
 <template name="ListExpenses">
   <h1>Expenses</h1>
 	<ul id="ExpensesList">
+		{{#each expenses}}
+		<li>{{subject}}</li>
+		{{/each}}
 	</ul>
-	<form>
-		<label>
-			<input type="text">
-		</label>
-		<button name="submit">Submit</button>
-	</form>
+	<a href="/expenses/new">Insert</a>
 </template>
