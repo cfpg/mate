@@ -29,7 +29,7 @@ if (Meteor.isServer) {
 		'payer':{
 			type:Number,
 			label:'Payer',
-			allowedValues:['1', '2', '3', '4']
+			allowedValues:['Konrad', 'Roemer', 'Ricky', 'Carlos', 'Rita']
 		}
 	}));
 }

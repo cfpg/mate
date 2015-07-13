@@ -13,7 +13,7 @@ Router.route('/', {
 
 Router.route('/expenses/new', {
 	name:'ExpensesNew',
-	controller:'Expenses',
-	action:'create',
+	controller:'ExpensesController',
+	action:'insert',
 	where:'client'
 });

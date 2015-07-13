@@ -8,7 +8,7 @@ ExpensesController = RouteController.extend({
     // Items.findOne({_id: this.params._id});
   },
 
-  action: function () {
-    this.render('Expenses', {});
+  insert: function () {
+    this.render('CreateExpense', {});
   }
 });
