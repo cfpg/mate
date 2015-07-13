@@ -11,9 +11,9 @@ Router.route('/', {
   where: 'client'
 });
 
-Router.route('/expenses/new', {
-	name:'ExpensesNew',
+Router.route('/expenses', {
+	name:'ExpensesList',
 	controller:'ExpensesController',
-	action:'insert',
+	action:'list',
 	where:'client'
 });
