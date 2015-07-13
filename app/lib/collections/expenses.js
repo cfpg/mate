@@ -1,10 +1,5 @@
 Expenses = new Mongo.Collection('expenses');
 
-
-if (Meteor.isClient) {
-	Meteor.subscribe('expenses');
-}
-
 if (Meteor.isServer) {
   Expenses.allow({
     insert: function (userId, doc) {
