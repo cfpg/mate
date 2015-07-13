@@ -17,3 +17,10 @@ Router.route('/expenses', {
 	action:'list',
 	where:'client'
 });
+
+Router.route('/expenses/create', {
+  name:'ExpensesCreate',
+  controller:'ExpensesController',
+  action:'create',
+  where:'client'
+});
