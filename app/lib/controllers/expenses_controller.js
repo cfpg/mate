@@ -10,5 +10,9 @@ ExpensesController = RouteController.extend({
 
   list: function () {		
     this.render('ListExpenses', {});
+  },
+
+  create: function () {
+    this.render('CreateExpense', {});
   }
 });

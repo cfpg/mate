@@ -1,4 +1,11 @@
 <template name="CreateExpense">
-  <h1>Insert new expense</h1>
-  {{> quickForm collection="Expenses" id="insertExpenseForm" type="insert" buttonContent="Insert"}}
+  <h1>Create expense</h1>
+  {{> CreateExpenseForm}}
+</template>
+
+<template name="CreateExpenseForm">
+  <form>
+    <input type="text" name="expenseTitle">
+    <input type="submit" value="Create Expense">
+  </form>
 </template>
