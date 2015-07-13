@@ -2,8 +2,15 @@
   <h1>Expenses</h1>
 	<ul id="ExpensesList">
 		{{#each expenses}}
-		<li>{{subject}}</li>
+			{{>ListExpensesItem}}
 		{{/each}}
 	</ul>
 	<a href="/expenses/new">Insert</a>
+</template>
+
+<template name="ListExpensesItem">
+	<li>
+		<strong>{{subject}}</strong>
+		<span>{{payee}}</span>
+	</li>
 </template>
