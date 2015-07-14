@@ -9,25 +9,30 @@ Template.ListExpenses.events({
 /*****************************************************************************/
 Template.ListExpenses.helpers({
 	expenses:function(){
-		
-		var expenses = Expenses.find().fetch();
-		
 		return [
 			{
-				subject: 'house rent'
+				subject: 'house rent',
+				payee: 'Konrad'
 			},
 			{
-				subject: 'carpet cleaning'
+				subject: 'carpet cleaning',
+				payee: 'Roemer'
 			},
 			{
-				subject: 'dog poo removal'
+				subject: 'dog poo removal',
+				payee: 'Rita'
 			},
 			{
-				subject: 'cleaning lady'
+				subject: 'cleaning lady',
+				payee: 'Ricky'
 			}
 		];
 	},
-	payee: [{name: 'Konrad'}, {name: 'Roemer'}, {name: 'Ricky'}, {name: 'Carlos'}]
+	payee: [{name: 'Konrad'}, {name: 'Roemer'}, {name: 'Ricky'}, {name: 'Carlos'}],
+	user:function(){
+		console.log(Meteor.user());
+		return Meteor.user();
+	}
 });
 
 /*****************************************************************************/

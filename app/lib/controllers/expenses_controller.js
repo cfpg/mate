@@ -1,6 +1,6 @@
 ExpensesController = RouteController.extend({
   subscriptions: function () {
-    this.subscribe('expenses');
+		
   },
 
   data: function () {
@@ -8,7 +8,7 @@ ExpensesController = RouteController.extend({
     // Items.findOne({_id: this.params._id});
   },
 
-  list: function () {		
+  list: function () {
     this.render('ListExpenses', {});
   },
 

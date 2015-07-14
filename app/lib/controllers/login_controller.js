@@ -17,7 +17,6 @@ LoginController = RouteController.extend({
   },
 
   login: function () {
-		console.log('Login page');
     this.render('Login',{});
   },
 	

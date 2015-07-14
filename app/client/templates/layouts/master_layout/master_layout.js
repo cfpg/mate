@@ -2,12 +2,12 @@ Template.MasterLayout.helpers({
 });
 
 Template.MasterLayout.events({
-	'click a.navbar-nav li a':function(e){
+	'click .navbar-nav li a':function(e){
 		e.preventDefault();
 		e.stopPropagation();
-		var link = $(event.target);
+		var $link = $(event.target);
 		var goTo = $link.data('goto');
-		console.log(link)
+		Router.go(goTo);
 	}
 });
 

@@ -5,7 +5,7 @@ Router.configure({
 });
 
 Router.route('/', {
-  name: 'home',
+  name: 'Home',
   controller: 'HomeController',
   action: 'action',
   where: 'client'
@@ -43,14 +43,13 @@ Router.route('/logout', {
 var beforeHooks = {
     isLoggedIn: function(pause) {
         if (!(Meteor.loggingIn() || Meteor.user())) {
-					console.log(Router.current())
 					if (Router.current().route.getName() == 'Login') {
 						this.next();
 					}
 					var snd = new Audio("http://wavcentral.com/sounds/movies/jurassic/jurass01.mp3");
 					var t = 500;
 					setInterval(function(){
-						snd.play();
+						// snd.play();
 						t = (t/2) - (t/3);
 					},500);
           Notifications.error('You need an account for that!', 'Please login');
@@ -60,4 +59,7 @@ var beforeHooks = {
         }
     }
 }
-Router.onBeforeAction(beforeHooks.isLoggedIn);
+Router.onBeforeAction(
+	beforeHooks.isLoggedIn,{
+		except:['login','logout','home']
+	});

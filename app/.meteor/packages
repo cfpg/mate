@@ -11,3 +11,8 @@ less
 twbs:bootstrap
 aldeed:collection2
 aldeed:simple-schema@1.0.3
+autopublish
+accounts-ui
+accounts-base
+acemtp:accounts-passwordless
+gfk:notifications

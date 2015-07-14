@@ -1,13 +1,11 @@
 <template name="ListExpenses">
-  <h1>Expenses</h1>
+  <h1>Expenses: {{user.username}}</h1>
 	<ul id="ExpensesList">
 		{{#each expenses}}
 			{{>ListExpensesItem}}
 		{{/each}}
 	</ul>
 	<a href="/expenses/create">Create</a>
-	<br>
-	{{> loginButtons}}
 </template>
 
 <template name="ListExpensesItem">
