@@ -8,18 +8,28 @@ if (Meteor.isClient) {
     'submit form': function(e){
       e.preventDefault();
       
-      var val = e.target.subject.value;
-
-      Expenses.insert({
-        subject: val
+      var $target = $(e.target),
+					$subject = $target.find('#expenseSubjectInput'),
+					$amount = $target.find('#expenseAmountInput');
+	
+			var doc = {
+        subject: $subject.val(),
+				amount: parseInt($amount.val())
+      }
+			console.log(doc)
+      var ins = Expenses.insert(doc, function(error, result){
+      	if (result) {
+					console.log('result',result)
+					Notifications.success('Success', 'Expense submitted');
+				
+		      // Clear form
+					$subject.val('');
+					$amount.val('');
+      	} else {
+					console.log(error);
+      		Notifications.error('Error!', 'Couldn\'t save that expense...');
+      	}
       });
-
-      // Clear form
-      event.target.subject.value = '';
-
-      // Prevent default form submit
-
-      return false;
 
     }
 

@@ -24,11 +24,6 @@ if (Meteor.isServer) {
 		'amount':{
 			type:Number,
 			label:'Amount'
-		},
-		'payer':{
-			type:Number,
-			label:'Payer',
-			allowedValues:['Konrad', 'Roemer', 'Ricky', 'Carlos', 'Rita']
 		}
 	}));
 }
