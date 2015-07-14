@@ -1,43 +1,20 @@
-/*****************************************************************************/
-/* CreateExpense: Event Handlers */
-/*****************************************************************************/
-Template.CreateExpense.events({
-  
-  'submit .create-expense': function(e){
-    
-    if (e) e.preventDefault();
-    
-    var subject = e.target.text.value;
+if (Meteor.isClient) {
+  // Inside the if (Meteor.isClient) block, right after Template.body.helpers:
+  Template.body.events({
+    'submit .create-expense': function (e) {
+      
 
-    console.log('subject', subject);
-    console.log('typeof', typeof subject);
+      var subject = event.target.subject.value;
 
-    Expenses.insert({
-      'subject': subject,
-      'amount': 130,
-      'payer': 1
-    });
+      Tasks.insert({
+        subject: subject
+      });
 
-  }
+      // Clear form
+      event.target.subject.value = "";
 
-});
-
-/*****************************************************************************/
-/* CreateExpense: Helpers */
-/*****************************************************************************/
-Template.CreateExpense.helpers({
-});
-
-/*****************************************************************************/
-/* CreateExpense: Lifecycle Hooks */
-/*****************************************************************************/
-Template.CreateExpense.created = function () {
-  console.log('created');
-};
-
-Template.CreateExpense.rendered = function () {
-  console.log('rendered form');
-};
-
-Template.CreateExpense.destroyed = function () {
-};
+      // Prevent default form submit
+      return false;
+    }
+  });
+}
