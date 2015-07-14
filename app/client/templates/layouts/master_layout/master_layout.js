@@ -1,3 +1,15 @@
+Template.registerHelper('getUserLink',function(){
+	var dataContext = Template.currentData();
+	console.log(dataContext);
+	var user = Meteor.users.findOne({
+		_id: dataContext.userId
+	});
+	if (user == 'undefined') {
+		return false;
+	}
+	return user;
+});
+
 Template.MasterLayout.helpers({
 });
 
