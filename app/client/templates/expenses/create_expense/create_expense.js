@@ -1,20 +1,48 @@
 if (Meteor.isClient) {
-  // Inside the if (Meteor.isClient) block, right after Template.body.helpers:
-  Template.body.events({
-    'submit .create-expense': function (e) {
+
+  /*****************************************************************************/
+  /* CreateExpense: Event Handlers */
+  /*****************************************************************************/
+  Template.CreateExpense.events({
+    
+    'submit form': function(e){
+      e.preventDefault();
       
+      var val = e.target.subject.value;
 
-      var subject = event.target.subject.value;
-
-      Tasks.insert({
-        subject: subject
+      Expenses.insert({
+        subject: val
       });
 
       // Clear form
-      event.target.subject.value = "";
+      event.target.subject.value = '';
 
       // Prevent default form submit
+
       return false;
+
     }
+
   });
+
+  /*****************************************************************************/
+  /* CreateExpense: Helpers */
+  /*****************************************************************************/
+  Template.CreateExpense.helpers({
+  });
+
+  /*****************************************************************************/
+  /* CreateExpense: Lifecycle Hooks */
+  /*****************************************************************************/
+  Template.CreateExpense.created = function () {
+    console.log('created');
+  };
+
+  Template.CreateExpense.rendered = function () {
+    console.log('rendered form');
+  };
+
+  Template.CreateExpense.destroyed = function () {
+  };
+
 }
