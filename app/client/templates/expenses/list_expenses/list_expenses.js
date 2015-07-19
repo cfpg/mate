@@ -2,6 +2,10 @@
 /* ListExpenses: Event Handlers */
 /*****************************************************************************/
 Template.ListExpenses.events({
+	'click #CreateExpense': function(e) {
+		e.preventDefault();
+		Router.go('/expenses/create');
+	}
 });
 
 /*****************************************************************************/
@@ -10,14 +14,9 @@ Template.ListExpenses.events({
 Template.ListExpenses.helpers({
 	expenses:function(){
 		var THAT=this;
-		var payee = [{name: 'Konrad'}, {name: 'Roemer'}, {name: 'Ricky'}, {name: 'Carlos'}];
 		var expenses = Expenses.find().fetch();
 		console.log(expenses)
 		return expenses;
-	},
-	payee: [{name: 'Konrad'}, {name: 'Roemer'}, {name: 'Ricky'}, {name: 'Carlos'}],
-	user:function(){
-		return Meteor.user();
 	}
 });
 

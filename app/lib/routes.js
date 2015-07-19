@@ -39,6 +39,20 @@ Router.route('/logout', {
   where:'client'
 });
 
+Router.route('/users', {
+  name: 'UsersHome',
+  controller: 'UsersController',
+  action: 'usersHome',
+  where: 'client'
+});
+
+Router.route('/users/:_id', {
+  name: 'UsersProfile',
+  controller: 'UsersController',
+  action: 'usersProfile',
+  where: 'client'
+});
+
 // (Global) Before hooks for any route
 var beforeHooks = {
     isLoggedIn: function(pause) {
@@ -62,4 +76,5 @@ var beforeHooks = {
 Router.onBeforeAction(
 	beforeHooks.isLoggedIn,{
 		except:['login','logout','home']
-	});
+	}
+);

@@ -1,16 +1,43 @@
 <template name="ListExpenses">
-  <h1>Expenses: {{user.username}}</h1>
-	<ul id="ExpensesList">
-		{{#each expenses}}
-			{{>ListExpensesItem}}
-		{{/each}}
-	</ul>
-	<a href="/expenses/create">Create</a>
+  <div class="row">
+		<div class="col-xs-8">
+		  <h1>Expenses: {{user.username}}</h1>
+		</div>
+		<div class="col-xs-4">
+			<button class="btn-primary btn pull-right" id="CreateExpense">Create</button>
+		</div>
+	</div>
+	
+  <table class="table table-striped custab">
+		<thead>
+			<tr>
+				<th>
+					When
+				</th>
+				<th>
+					Subject
+				</th>
+				<th>
+					Amount
+				</th>
+				<th>
+					User
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+      {{#each expenses}}
+				{{>ListExpensesItem}}
+			{{/each}}
+		</tbody>
+	</table>
 </template>
 
 <template name="ListExpensesItem">
-	<li>
-		<strong>{{subject}}</strong>
-		<span>{{userId}}</span>
-	</li>
+  <tr>
+		<td>{{createdAt}}</td>
+		<td>{{subject}}</td>
+		<td>{{amount}}</td>
+		<td><a href="/users/{{user._id}}">{{user.username}}</a></td>
+	</tr>
 </template>
