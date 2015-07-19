@@ -7,7 +7,10 @@
 			<button class="btn-primary btn pull-right" id="CreateExpense">Create</button>
 		</div>
 	</div>
-	
+	{{>ListExpensesTable expenses=expenses}}
+</template>
+
+<template name="ListExpensesTable">
   <table class="table table-striped custab">
 		<thead>
 			<tr>
@@ -27,7 +30,7 @@
 		</thead>
 		<tbody>
       {{#each expenses}}
-				{{>ListExpensesItem}}
+				{{>ListExpensesItem createdAt=createdAt subject=subject amount=amount user=user}}
 			{{/each}}
 		</tbody>
 	</table>

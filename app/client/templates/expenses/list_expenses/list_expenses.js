@@ -14,9 +14,12 @@ Template.ListExpenses.events({
 Template.ListExpenses.helpers({
 	expenses:function(){
 		var THAT=this;
-		var expenses = Expenses.find().fetch();
-		console.log(expenses)
-		return expenses;
+		var expenses = Expenses.find({}, {
+			sort: {
+				createdAt: -1
+			}
+		});
+		return expenses.fetch();
 	}
 });
 

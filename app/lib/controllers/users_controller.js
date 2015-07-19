@@ -17,7 +17,23 @@ UsersController = RouteController.extend({
   },
 
   usersHome: function () {
-    this.render('Users', {});
+		var expenses = Expenses.find({
+			'user._id': Meteor.userId()
+		}).fetch();
+		
+		var totalTransactions = 0;
+		var totalExpenses = 0;
+		
+		_.each(expenses, function(itm,n) {
+			totalTransactions = totalTransactions + 1;
+			totalExpenses = totalExpenses + itm.amount;
+		});
+		
+    this.render('Users', {
+    	expenses: expenses,
+			totalExpenses: totalExpenses,
+			totalTransactions: totalTransactions
+    });
   },
 	
 	usersProfile: function () {

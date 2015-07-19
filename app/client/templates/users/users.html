@@ -1,5 +1,18 @@
 <template name="Users">
-  <h1>Find me in app/client/templates/users/users</h1>
+  <h1>Your Account</h1>
+	
+	<div class="row">
+		<div class="col-xs-6">
+			<h3>Total Expenses</h3>
+			<strong>{{totalExpenses}}</strong>
+		</div>
+		<div class="col-xs-6">
+			<h3>Total Transactions</h3>
+			<strong>{{totalTransactions}}</strong>
+		</div>
+	</div>
+	
+	{{>ListExpensesTable expenses=expenses}}
 </template>
 
 <template name="UsersProfile">
