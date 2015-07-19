@@ -12,28 +12,31 @@ UsersController = RouteController.extend({
   },
 
   data: function () {
-    // return a global data context like this:
-    // Items.findOne({_id: this.params._id});
-  },
-
-  usersHome: function () {
 		var expenses = Expenses.find({
-			'user._id': Meteor.userId()
+			"user._id": Meteor.userId()
 		}).fetch();
 		
 		var totalTransactions = 0;
 		var totalExpenses = 0;
+		var owed = 995;
 		
 		_.each(expenses, function(itm,n) {
 			totalTransactions = totalTransactions + 1;
 			totalExpenses = totalExpenses + itm.amount;
 		});
 		
-    this.render('Users', {
+		owed = owed - (totalExpenses / 3);
+		
+		return {
     	expenses: expenses,
 			totalExpenses: totalExpenses,
-			totalTransactions: totalTransactions
-    });
+			totalTransactions: totalTransactions,
+			owed: owed
+    };
+  },
+
+  usersHome: function () {		
+    this.render('Users', {});
   },
 	
 	usersProfile: function () {
