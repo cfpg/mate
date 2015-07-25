@@ -2,6 +2,10 @@
 /* Users: Event Handlers */
 /*****************************************************************************/
 Template.Users.events({
+	'click #AddRent':function(e){
+		e.preventDefault();
+		Router.go('/user/rent');
+	}
 });
 
 /*****************************************************************************/
@@ -11,7 +15,7 @@ Template.Users.helpers({
 	userInfo:function(){
 		console.log(name);
 		var name = 'jaha'
-	}
+	},
 });
 
 /*****************************************************************************/
@@ -21,7 +25,7 @@ Template.Users.created = function () {
 };
 
 Template.Users.rendered = function () {
-	console.log(rendered);
+	
 };
 
 Template.Users.destroyed = function () {

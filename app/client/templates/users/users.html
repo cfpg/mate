@@ -1,5 +1,11 @@
-<template name="Users">
-  <h1>Your Account</h1>
+<template name="Users"><div class="row">
+		<div class="col-xs-8">
+		  <h1>Your Account: {{user.username}}</h1>
+		</div>
+		<div class="col-xs-4">
+			<button class="btn-primary btn pull-right" id="AddRent">Modify Rent</button>
+		</div>
+	</div>
 	
 	<div class="row user-totals">
 		<div class="col-xs-4">

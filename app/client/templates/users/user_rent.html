@@ -1,0 +1,22 @@
+<template name="UserRent">
+	<div class="row">
+		<div class="col-xs-6">
+			<h1>Add/Modify Rent</h1>
+			<form action="/user/rent" method="POST" id="UserRentForm">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Rent</label>
+					<input type="text" class="form-control" id="userRentInput" name="userRentInput" placeholder="Rent" value="{{user.rent}}">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-default">Submit</button>
+				</div>
+			</form>
+		</div>
+		{{#if user.rent}}
+		<div class="col-xs-6 aligncenter">
+			<h1>Current Rent</h1>
+			<h3><sup>$</sup>{{user.rent}}</h3>
+		</div>
+		{{/if}}
+	</div>
+</template>

@@ -1,6 +1,13 @@
 Expenses = new Mongo.Collection('expenses');
 
 if (Meteor.isServer) {
+	Meteor.publish("currentUser",
+	  function () {
+	    return Meteor.users.find(this.userId,
+	      {fields: {rent: 1}});
+	  }
+	);
+	
   Expenses.allow({
     insert: function (userId, doc) {
 			if (doc.userId != userId) return false;

@@ -39,10 +39,17 @@ Router.route('/logout', {
   where:'client'
 });
 
-Router.route('/users', {
-  name: 'UsersHome',
+Router.route('/user', {
+  name: 'UserHome',
   controller: 'UsersController',
   action: 'usersHome',
+  where: 'client'
+});
+
+Router.route('/user/rent', {
+  name: 'UserRent',
+  controller: 'UsersController',
+  action: 'userRent',
   where: 'client'
 });
 
