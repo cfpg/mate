@@ -14,6 +14,7 @@ autopublish
 accounts-ui
 accounts-base
 acemtp:accounts-passwordless
-gfk:notifications
 underscore
 twbs:bootstrap
+juliancwirko:s-alert
+juliancwirko:s-alert-stackslide

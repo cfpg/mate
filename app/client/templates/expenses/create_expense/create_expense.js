@@ -18,13 +18,13 @@ if (Meteor.isClient) {
       }
       Expenses.insert(doc, function(error, result){
       	if (result) {
-					Notifications.success('Success', 'Expense submitted');
+					sAlert.success('Success', 'Expense submitted');
 				
 		      // Clear form
 					$subject.val('');
 					$amount.val('');
       	} else {
-      		Notifications.error('Error!', 'Couldn\'t save that expense...');
+      		sAlert.error('Error!', 'Couldn\'t save that expense...');
 					console.error(error);
       	}
       });

@@ -73,7 +73,7 @@ var beforeHooks = {
 						// snd.play();
 						t = (t/2) - (t/3);
 					},500);
-          Notifications.error('You need an account for that!', 'Please login');
+          sAlert.error('You need an account for that!', 'Please login');
           Router.go('Login');
         } else {
         	this.next();

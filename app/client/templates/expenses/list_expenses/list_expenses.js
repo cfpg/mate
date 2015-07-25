@@ -5,6 +5,10 @@ Template.ListExpenses.events({
 	'click #CreateExpense': function(e) {
 		e.preventDefault();
 		Router.go('/expenses/create');
+	},
+	'click .deleteExpense': function(e) {
+		e.preventDefault();
+		Expenses.remove(this._id);
 	}
 });
 
