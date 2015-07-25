@@ -1,7 +1,7 @@
 /*****************************************************************************/
 /* Users: Event Handlers */
 /*****************************************************************************/
-Template.Users.events({
+Template.User.events({
 	'click #AddRent':function(e){
 		e.preventDefault();
 		Router.go('/user/rent');
@@ -11,7 +11,7 @@ Template.Users.events({
 /*****************************************************************************/
 /* Users: Helpers */
 /*****************************************************************************/
-Template.Users.helpers({
+Template.User.helpers({
 	userInfo:function(){
 		console.log(name);
 		var name = 'jaha'
@@ -21,12 +21,12 @@ Template.Users.helpers({
 /*****************************************************************************/
 /* Users: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Users.created = function () {
+Template.User.created = function () {
 };
 
-Template.Users.rendered = function () {
+Template.User.rendered = function () {
 	
 };
 
-Template.Users.destroyed = function () {
+Template.User.destroyed = function () {
 };

@@ -13,10 +13,11 @@ UsersController = RouteController.extend({
 
   data: function () {
 		var user = Meteor.user();
+		var owed = 0;
 		if(Meteor.user()){
 		    Meteor.subscribe('currentUser');
+				owed = user.rent || 0;
 		}
-		var owed = user.rent;
 		var expenses = Expenses.find({
 			"user._id": Meteor.userId()
 		}).fetch();
@@ -29,6 +30,7 @@ UsersController = RouteController.extend({
 		});
 		
 		owed = owed - (totalExpenses / 3);
+		owed = Number(owed.toFixed(2));
 		
 		return {
 			expenses: expenses,
@@ -41,7 +43,7 @@ UsersController = RouteController.extend({
   },
 
   usersHome: function () {
-    this.render('Users', {});
+    this.render('User', {});
   },
 	
 	usersProfile: function () {
