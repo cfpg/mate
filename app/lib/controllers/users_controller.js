@@ -35,20 +35,20 @@ UsersController = RouteController.extend({
     };
   },
 
-  usersHome: function () {		
+  usersHome: function () {
     this.render('Users', {});
   },
 	
 	usersProfile: function () {
-		var params = Iron.controller().getParams();
-		console.log(params)
-		
-		var currUser = Meteor.users().find({
-			_id: params._id
-		}).fetch();
-		
-		this.render('UsersProfile', {
-			currentUser: currUser
+		console.log(this.params)
+		var currentUser = Meteor.users.findOne({
+			_id: this.params._id
 		});
+		currentUser.email = currentUser.emails[0].address;
+		console.log(currentUser);
+		var expenses = Expenses.find({
+			_id: this.params._id
+		});
+		this.render('UsersProfile')
 	}
 });
