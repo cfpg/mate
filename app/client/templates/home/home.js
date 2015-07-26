@@ -27,6 +27,15 @@ Template.ManageHome.events({
 	},
 	'submit #AddUserHome' : function(e) {
 		e.preventDefault();
+		
+		var home = Home.findOne();
+		var userId = $(e.target).find('.addUserSelect').val();
+		var user = Meteor.users.findOne(userId);
+		Meteor.users.update(userId, {
+			'$set' : {
+				'profile.home' : home._id
+			}
+		})
 	}
 });
 

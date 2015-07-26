@@ -18,9 +18,16 @@ UsersController = RouteController.extend({
 		    Meteor.subscribe('currentUser');
 				owed = user.rent || 0;
 		}
+		
+		var homeUsers = {};
+		homeUsers = Meteor.users.find({
+			'profile.home' : Home.findOne()._id
+		}).fetch();
+		
 		var expenses = Expenses.find({
 			"user._id": Meteor.userId()
 		}).fetch();
+		
 		var totalTransactions = 0;
 		var totalExpenses = 0;
 		
@@ -28,8 +35,8 @@ UsersController = RouteController.extend({
 			totalTransactions = totalTransactions + 1;
 			totalExpenses = totalExpenses + itm.amount;
 		});
-		
-		owed = owed - (totalExpenses / 3);
+		console.log(homeUsers);
+		owed = owed - (totalExpenses / homeUsers.length);
 		owed = Number(owed.toFixed(2));
 		
 		return {
@@ -54,7 +61,7 @@ UsersController = RouteController.extend({
 		currentUser.email = currentUser.emails[0].address;
 		console.log(currentUser);
 		var expenses = Expenses.find({
-			_id: this.params._id
+			_id : this.params._id
 		});
 		this.render('UsersProfile')
 	},

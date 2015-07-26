@@ -20,7 +20,7 @@ if (Meteor.isServer) {
     },
 
     remove: function (userId, doc) {
-			if (doc.userId != userId) return false;
+			if (doc.user._id != userId) return false;
       return true;
     }
   });

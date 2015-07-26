@@ -12,14 +12,44 @@ HomeController = RouteController.extend({
   },
 
   data: function () {
-    var home = Home.findOne();
-		var currentAddress = '';
-		
-		if (_.isObject(home)) {
-			var currentAddress = home.address;
+		if (Meteor.isServer) {
+			Meteor.publish('theHouse', function() {
+				return Home.findOne();
+			});
+			
+			Meteor.publish('theAddress', function() {
+				return Home.findOne().address;
+			})
+			
+			Meteor.publish('theRenters', function() {
+				return Meteor.users.find({
+					address: Home.findOne().address
+				}).fetch();
+			});
 		}
 		
-		var users = Meteor.users.find().fetch();
+		if (Meteor.isClient) {
+			Meteor.subscribe('theHouse');
+			Meteor.subscribe('theAddress');
+			Meteor.subscribe('theRenters');
+			
+			// Fetch current Home, at the moment only a single house is supported so findOne() with no arguments works
+			var currentHome = {};
+			currentHome = Home.findOne();
+			
+			// Fetch users that belong to this house
+			if (currentHome) {
+				var renters = Meteor.users.find({
+					'profile.home' : currentHome._id
+				}).fetch();
+			}
+			
+			return {
+				currentHome : Home.findOne(),
+				renters : renters,
+				users : Meteor.users.find()
+			}
+		}
   },
 
   manageHome: function () {
