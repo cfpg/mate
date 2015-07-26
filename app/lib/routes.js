@@ -7,7 +7,7 @@ Router.configure({
 Router.route('/', {
   name: 'Home',
   controller: 'HomeController',
-  action: 'action',
+  action: 'manageHome',
   where: 'client'
 });
 

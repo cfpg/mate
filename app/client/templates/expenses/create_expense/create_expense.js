@@ -18,7 +18,7 @@ if (Meteor.isClient) {
       }
       Expenses.insert(doc, function(error, result){
       	if (result) {
-					sAlert.success('Success', 'Expense submitted');
+					sAlert.success('Expense submitted');
 				
 		      // Clear form
 					$subject.val('');
