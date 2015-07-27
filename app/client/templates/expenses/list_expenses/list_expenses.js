@@ -49,3 +49,13 @@ Template.ListExpensesItem.events({
 		}
 	}
 });
+
+Template.ListExpensesItem.helpers({
+	expenseOwner : function() {
+		if (Meteor.userId() == this.user._id) {
+			return true;
+		}
+		
+		return false;
+	}
+});

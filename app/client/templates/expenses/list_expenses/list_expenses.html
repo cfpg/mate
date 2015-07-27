@@ -40,11 +40,13 @@
 <template name="ListExpensesItem">
   <tr>
 		<td>
+			{{#if expenseOwner}}
 			<p data-placement="top" data-toggle="tooltip" title="Delete" class="text-center">
 				<button class="btn btn-danger btn-xs deleteExpense" data-title="Delete" data-toggle="modal" data-target="#Delete">
 					<span class="glyphicon glyphicon-trash	"></span>
 				</button>
 			</p>
+			{{/if}}
 		</td>
 		<td>{{createdAt}}</td>
 		<td>{{subject}}</td>
